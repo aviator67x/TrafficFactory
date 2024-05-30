@@ -12,8 +12,13 @@
 		A2CED1FA2C087E050092C050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2CED1F92C087E050092C050 /* Assets.xcassets */; };
 		A2CED1FD2C087E050092C050 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2CED1FC2C087E050092C050 /* Preview Assets.xcassets */; };
 		A2CED2082C0882AB0092C050 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED2072C0882AB0092C050 /* TestViewModel.swift */; };
-		A2CED20C2C0883140092C050 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED20B2C0883140092C050 /* APIService.swift */; };
+		A2CED20C2C0883140092C050 /* ObjectsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED20B2C0883140092C050 /* ObjectsLoader.swift */; };
 		A2CED20E2C08841C0092C050 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED20D2C08841C0092C050 /* LoadingState.swift */; };
+		A2CED2112C0885D40092C050 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED2102C0885D40092C050 /* ResponseModel.swift */; };
+		A2CED2142C0896000092C050 /* View+AspectRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED2132C0896000092C050 /* View+AspectRatio.swift */; };
+		A2CED2162C08D3EE0092C050 /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED2152C08D3EE0092C050 /* ObjectModel.swift */; };
+		A2CED2182C091D660092C050 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED2172C091D660092C050 /* CellView.swift */; };
+		A2CED21A2C091EA30092C050 /* ImagesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CED2192C091EA30092C050 /* ImagesLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +28,13 @@
 		A2CED1F92C087E050092C050 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2CED1FC2C087E050092C050 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A2CED2072C0882AB0092C050 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
-		A2CED20B2C0883140092C050 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		A2CED20B2C0883140092C050 /* ObjectsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsLoader.swift; sourceTree = "<group>"; };
 		A2CED20D2C08841C0092C050 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		A2CED2102C0885D40092C050 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		A2CED2132C0896000092C050 /* View+AspectRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AspectRatio.swift"; sourceTree = "<group>"; };
+		A2CED2152C08D3EE0092C050 /* ObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
+		A2CED2172C091D660092C050 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		A2CED2192C091EA30092C050 /* ImagesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +67,11 @@
 		A2CED1F42C087E030092C050 /* TrafficFactory */ = {
 			isa = PBXGroup;
 			children = (
-				A2CED20F2C0884200092C050 /* Helpers */,
 				A2CED2032C08815E0092C050 /* App */,
 				A2CED2042C08816C0092C050 /* BusinessLogic */,
 				A2CED2052C0881830092C050 /* Presentation */,
+				A2CED2122C0895CC0092C050 /* Extensions */,
+				A2CED20F2C0884200092C050 /* Helpers */,
 				A2CED2062C0881E20092C050 /* Resources */,
 				A2CED1FB2C087E050092C050 /* Preview Content */,
 			);
@@ -97,6 +108,7 @@
 			children = (
 				A2CED1F72C087E030092C050 /* TestView.swift */,
 				A2CED2072C0882AB0092C050 /* TestViewModel.swift */,
+				A2CED2172C091D660092C050 /* CellView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -112,6 +124,8 @@
 		A2CED2092C0882EF0092C050 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A2CED2102C0885D40092C050 /* ResponseModel.swift */,
+				A2CED2152C08D3EE0092C050 /* ObjectModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,7 +133,8 @@
 		A2CED20A2C0882FA0092C050 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A2CED20B2C0883140092C050 /* APIService.swift */,
+				A2CED20B2C0883140092C050 /* ObjectsLoader.swift */,
+				A2CED2192C091EA30092C050 /* ImagesLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -130,6 +145,14 @@
 				A2CED20D2C08841C0092C050 /* LoadingState.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A2CED2122C0895CC0092C050 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A2CED2132C0896000092C050 /* View+AspectRatio.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,8 +228,13 @@
 				A2CED2082C0882AB0092C050 /* TestViewModel.swift in Sources */,
 				A2CED1F82C087E030092C050 /* TestView.swift in Sources */,
 				A2CED20E2C08841C0092C050 /* LoadingState.swift in Sources */,
-				A2CED20C2C0883140092C050 /* APIService.swift in Sources */,
+				A2CED2142C0896000092C050 /* View+AspectRatio.swift in Sources */,
+				A2CED20C2C0883140092C050 /* ObjectsLoader.swift in Sources */,
+				A2CED2112C0885D40092C050 /* ResponseModel.swift in Sources */,
+				A2CED21A2C091EA30092C050 /* ImagesLoader.swift in Sources */,
 				A2CED1F62C087E030092C050 /* TrafficFactoryApp.swift in Sources */,
+				A2CED2162C08D3EE0092C050 /* ObjectModel.swift in Sources */,
+				A2CED2182C091D660092C050 /* CellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,8 +369,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -350,9 +378,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = andrew.TrafficFactory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -370,8 +401,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,9 +410,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = andrew.TrafficFactory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
