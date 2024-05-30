@@ -11,7 +11,7 @@ import SwiftUI
 struct TrafficFactoryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TestView()
         }
     }
 }
