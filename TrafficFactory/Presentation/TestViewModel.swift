@@ -8,14 +8,21 @@
 import Foundation
 
 final class TestVeiwModel: ObservableObject {
+    // MARK: - private properties
+
+    private let objectsLoader: ObjectsLoadable = ObjectsLoader()
+    private let cacher = Cacher()
+    private let imagesLoader: ImagesLoadable
+    
+    // MARK: - published properties
+
     @Published var state: LoadingState<[ObjectModel]> = .idle
     @Published var imageState: LoadingState<Data> = .loading
     
-    private var images: [ResponseModel] = []
-    
-    var objectsLoader: ObjectsLoadable = ObjectsLoader()
-    
+    // MARK: - life cycle
+
     init() {
+        imagesLoader = ImagesLoader(cacher: cacher)
         getObjects()
     }
     
@@ -25,9 +32,9 @@ final class TestVeiwModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case let .success(objects):
-                    self.images = objects
                     let objectModels = objects.map {
-                        ObjectModel(object: $0)
+                        ObjectModel(object: $0,
+                                    imageLoader: self.imagesLoader)
                     }
                     self.state = .loaded(objectModels)
                     

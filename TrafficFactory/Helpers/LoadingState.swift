@@ -5,13 +5,13 @@
 //  Created by Andrew Kasilov on 30.05.2024.
 //
 
-public enum LoadingState<Value> {
+enum LoadingState<Value> {
     case idle
     case loading
     case failure(Error)
     case loaded(Value)
 
-    public var isLoading: Bool {
+    var isLoading: Bool {
         switch self {
         case .loading:
             return true
@@ -20,9 +20,9 @@ public enum LoadingState<Value> {
         }
     }
 
-    public var isFinished: Bool { !isLoading }
+    var isFinished: Bool { !isLoading }
 
-    public var isFailure: Bool {
+    var isFailure: Bool {
         switch self {
         case .failure:
             return true
@@ -31,7 +31,7 @@ public enum LoadingState<Value> {
         }
     }
 
-    public var value: Value? {
+    var value: Value? {
         switch self {
         case let .loaded(value):
             return value
@@ -40,7 +40,7 @@ public enum LoadingState<Value> {
         }
     }
 
-    public var error: Error? {
+    var error: Error? {
         switch self {
         case let .failure(error):
             return error
@@ -49,7 +49,7 @@ public enum LoadingState<Value> {
         }
     }
 
-    public func map<NewValue>(_ transform: (Value) -> NewValue) -> LoadingState<NewValue> {
+    func map<NewValue>(_ transform: (Value) -> NewValue) -> LoadingState<NewValue> {
         switch self {
         case .idle:
             return .idle
@@ -62,7 +62,7 @@ public enum LoadingState<Value> {
         }
     }
 
-    public func flatMap<NewValue>(_ transform: (Value) -> LoadingState<NewValue>) -> LoadingState<NewValue> {
+    func flatMap<NewValue>(_ transform: (Value) -> LoadingState<NewValue>) -> LoadingState<NewValue> {
         switch self {
         case .idle:
             return .idle
@@ -77,9 +77,9 @@ public enum LoadingState<Value> {
 }
 
 extension LoadingState: Equatable where Value: Equatable {
-    public static func == (lhs: LoadingState<Value>, rhs: LoadingState<Value>) -> Bool {
+    static func == (lhs: LoadingState<Value>, rhs: LoadingState<Value>) -> Bool {
         switch (lhs, rhs) {
-        case (.loaded(let valueL), .loaded(let valueR)): return valueL == valueR
+        case let (.loaded(valueL), .loaded(valueR)): return valueL == valueR
         case (.loading, .loading): return true
         case (.idle, .idle): return true
         default: return false

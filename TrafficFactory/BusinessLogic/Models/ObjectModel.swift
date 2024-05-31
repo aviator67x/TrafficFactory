@@ -8,16 +8,26 @@
 import Foundation
 
 final class ObjectModel: ObservableObject, Identifiable {
+    // MARK: - private properties
+
+    private let imageLoader: ImagesLoadable
+    
     let id = UUID()
     let image: ResponseModel
-    @Published var imageState: LoadingState<Data> = .idle
-    private let imageLoader: ImagesLoadable = ImagesLoader()
 
-    init(object: ResponseModel) {
+    // MARK: - published properties
+
+    @Published private(set) var imageState: LoadingState<Data> = .idle
+
+    // MARK: - life cycle
+
+    init(object: ResponseModel, imageLoader: ImagesLoadable) {
         self.image = object
+        self.imageLoader = imageLoader
     }
 
     func getImage(url: String) {
+        imageState = .loading
         imageLoader.getImage(at: url) { result in
             DispatchQueue.main.async {
                 switch result {
@@ -32,6 +42,7 @@ final class ObjectModel: ObservableObject, Identifiable {
     }
 
     func stopLoading() {
+        imageState = .idle
         imageLoader.cancelDownloading()
     }
 }

@@ -11,10 +11,12 @@ enum FetchError: Error {
     case invalidURL
     case failedRequest(Error)
     case failedDecoding
+    case noData
 }
 
 protocol ObjectsLoadable {
-    func loadObjects(from url: String, completion: @escaping (Result<[ResponseModel], FetchError>) -> ())
+    func loadObjects(from url: String,
+                     completion: @escaping (Result<[ResponseModel], FetchError>) -> ())
 }
 
 final class ObjectsLoader: ObjectsLoadable {
@@ -22,16 +24,18 @@ final class ObjectsLoader: ObjectsLoadable {
                      completion: @escaping (Result<[ResponseModel], FetchError>) -> ())
     {
         guard let url = URL(string: url) else {
-            completion(.failure(.invalidURL))
-            return
+            return completion(.failure(.invalidURL))
         }
+
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error {
                 completion(.failure(.failedRequest(error)))
             }
+
             guard let data else {
-                return
+                return completion(.failure(.noData))
             }
+
             do {
                 let objects = try JSONDecoder().decode([ResponseModel].self, from: data)
                 completion(.success(objects))

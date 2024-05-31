@@ -9,12 +9,11 @@ import Combine
 import SwiftUI
 
 struct TestView: View {
-    @StateObject private var viewModel = TestVeiwModel()
-
     var body: some View {
         switch viewModel.state {
         case .idle:
-            Color.yellow
+            Color.gray
+                .frame(maxWidth: .infinity)
 
         case .loading:
             ProgressView()
@@ -34,26 +33,16 @@ struct TestView: View {
 
         case let .loaded(objects):
             List(objects) { object in
-                VStack {
-                    CellView(object: object)
-                    Text(object.image.title)
-                    Text(object.image.description)
-                }
-                .listRowInsets(.init())
-                .onAppear {
-                    object.imageState = .loading
-                    object.getImage(url: object.image.imageURL)
-                }
-                .onDisappear {
-                    object.imageState = .idle
-                    object.stopLoading()
-                }
+                TestCellView(object: object)
             }
             .frame(maxWidth: .infinity)
-            .edgesIgnoringSafeArea(.horizontal)
             .listStyle(.plain)
         }
     }
+
+    // MARK: - private properties
+
+    @StateObject private var viewModel = TestVeiwModel()
 }
 
 struct ContentView_Previews: PreviewProvider {
