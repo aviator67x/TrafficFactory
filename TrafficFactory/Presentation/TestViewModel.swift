@@ -21,15 +21,20 @@ final class TestVeiwModel: ObservableObject {
     
     func getObjects() {
         state = .loading
-        objectsLoader.loadObjects(from: "https://496.ams3.cdn.digitaloceanspaces.com/data/test.json") { objects in
+        objectsLoader.loadObjects(from: "https://496.ams3.cdn.digitaloceanspaces.com/data/test.json") { result in
             DispatchQueue.main.async {
-                self.images = objects
-                let objectModels = objects.map {
-                    ObjectModel(object: $0)
+                switch result {
+                case let .success(objects):
+                    self.images = objects
+                    let objectModels = objects.map {
+                        ObjectModel(object: $0)
+                    }
+                    self.state = .loaded(objectModels)
+                    
+                case let .failure(error):
+                    self.state = .failure(error)
                 }
-                self.state = .loaded(objectModels)
             }
         }
     }
 }
-

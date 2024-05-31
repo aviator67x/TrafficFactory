@@ -15,16 +15,23 @@ struct TestView: View {
         switch viewModel.state {
         case .idle:
             Color.yellow
-            
+
         case .loading:
             ProgressView()
                 .scaleEffect(5)
-            
+
         case .failure:
-            Button("Reload table") {
+            Button(action: {
                 viewModel.getObjects()
+            }) {
+                Text("Reload table")
+                    .padding(10)
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
             }
-            
+            .frame(width: 200, height: 50)
+
         case let .loaded(objects):
             List(objects) { object in
                 VStack {
@@ -54,5 +61,3 @@ struct ContentView_Previews: PreviewProvider {
         TestView()
     }
 }
-
-

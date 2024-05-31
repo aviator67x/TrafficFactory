@@ -16,7 +16,7 @@ struct CellView: View {
             case .idle:
                 Color.green
                     .aspectRatio(contentMode: .fill)
-                
+
             case let .loaded(data):
                 if let image = UIImage(data: data) {
                     Image(uiImage: image)
@@ -28,7 +28,7 @@ struct CellView: View {
                 ProgressView()
                     .scaleEffect(2)
                     .frame(alignment: .center)
-                
+
             case .failure:
                 Text("Can't download image")
             }

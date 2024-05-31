@@ -18,9 +18,15 @@ final class ObjectModel: ObservableObject, Identifiable {
     }
 
     func getImage(url: String) {
-        imageLoader.getImage(at: url) { data in
+        imageLoader.getImage(at: url) { result in
             DispatchQueue.main.async {
-                self.imageState = .loaded(data)
+                switch result {
+                case let .success(data):
+                    self.imageState = .loaded(data)
+
+                case let .failure(error):
+                    self.imageState = .failure(error)
+                }
             }
         }
     }
